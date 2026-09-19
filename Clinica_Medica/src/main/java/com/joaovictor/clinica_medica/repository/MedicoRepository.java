@@ -1,4 +1,4 @@
 package com.joaovictor.clinica_medica.repository;
 
-public interface MedicoRepository {
+public class MedicoRepository {
 }
