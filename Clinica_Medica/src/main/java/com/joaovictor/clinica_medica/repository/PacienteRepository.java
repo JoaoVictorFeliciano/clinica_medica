@@ -19,6 +19,17 @@ public class PacienteRepository {
         entityManager.persist(paciente);
     }
 
+    public Paciente buscarPorCpf(String cpf) {
+        return entityManager
+                .createQuery(
+                        "SELECT p FROM Paciente p WHERE p.cpf = :cpf",
+                        Paciente.class
+                )
+                .setParameter("cpf", cpf)
+                .getResultStream()
+                .findFirst()
+                .orElse(null);
+    }
     public Paciente buscarPorId(Long id) {
         return entityManager.find(Paciente.class, id);
     }

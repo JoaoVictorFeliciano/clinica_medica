@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -18,6 +20,21 @@ public class ConsultaRepository {
         entityManager.persist(consulta);
     }
 
+    public boolean existeConsultaNoHorario(Long medicoId, LocalDateTime dataHora) {
+
+        Long quantidade = entityManager
+                .createQuery(
+                        "SELECT COUNT(c) FROM Consulta c " +
+                                "WHERE c.medico.id = :medicoId " +
+                                "AND c.dataHora = :dataHora",
+                        Long.class
+                )
+                .setParameter("medicoId", medicoId)
+                .setParameter("dataHora", dataHora)
+                .getSingleResult();
+
+        return quantidade > 0;
+    }
     public Consulta buscarPorId(Long id) {
         return entityManager.find(Consulta.class, id);
     }

@@ -18,6 +18,17 @@ public class MedicoRepository {
         entityManager.persist(medico);
     }
 
+    public Medico buscarPorCrm(String crm) {
+        return entityManager
+                .createQuery(
+                        "SELECT m FROM Medico m WHERE m.crm = :crm",
+                        Medico.class
+                )
+                .setParameter("crm", crm)
+                .getResultStream()
+                .findFirst()
+                .orElse(null);
+    }
     public Medico buscarPorId(Long id){
         return entityManager.find(Medico.class, id);
     }
