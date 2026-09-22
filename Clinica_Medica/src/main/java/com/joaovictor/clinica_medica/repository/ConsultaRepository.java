@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -26,6 +28,23 @@ public class ConsultaRepository {
         return entityManager
                 .createQuery("SELECT c FROM Consulta c", Consulta.class)
                 .getResultList();
+    }
+
+    public Consulta buscarPorMedicoEDataHora(Long medicoId, LocalDateTime dataHora) {
+        try {
+            return entityManager
+                    .createQuery(
+                            "SELECT c FROM Consulta c " +
+                                    "WHERE c.medico.id = :medicoId " +
+                                    "AND c.dataHora = :dataHora",
+                            Consulta.class
+                    )
+                    .setParameter("medicoId", medicoId)
+                    .setParameter("dataHora", dataHora)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Transactional

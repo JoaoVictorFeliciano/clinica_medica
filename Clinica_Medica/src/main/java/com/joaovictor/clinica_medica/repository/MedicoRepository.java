@@ -28,6 +28,20 @@ public class MedicoRepository {
                 .getResultList();
     }
 
+    public Medico buscarPorCrm(String crm) {
+        try {
+            return entityManager
+                    .createQuery(
+                            "SELECT m FROM Medico m WHERE m.crm = :crm",
+                            Medico.class
+                    )
+                    .setParameter("crm", crm)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     @Transactional
     public void atualizar(Medico medico) {
         entityManager.merge(medico);

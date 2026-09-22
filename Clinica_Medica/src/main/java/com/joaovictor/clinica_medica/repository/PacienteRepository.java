@@ -29,6 +29,20 @@ public class PacienteRepository {
                 .getResultList();
     }
 
+    public Paciente buscarPorCpf(String cpf) {
+        try {
+            return entityManager
+                    .createQuery(
+                            "SELECT p FROM Paciente p WHERE p.cpf = :cpf",
+                            Paciente.class
+                    )
+                    .setParameter("cpf", cpf)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     @Transactional
     public void atualizar(Paciente paciente) {
         entityManager.merge(paciente);
