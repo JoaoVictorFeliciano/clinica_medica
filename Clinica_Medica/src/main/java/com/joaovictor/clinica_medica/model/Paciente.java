@@ -1,6 +1,7 @@
 package com.joaovictor.clinica_medica.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import java.time.LocalDate;
@@ -17,16 +18,16 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotBlank
     private String nome;
 
-    @NotNull
+    @NotBlank
     private String cpf;
 
-    @NotNull
+    @NotBlank
     private LocalDate dataNascimento;
 
-    @NotNull
+    @NotBlank
     private String telefone;
 }
 

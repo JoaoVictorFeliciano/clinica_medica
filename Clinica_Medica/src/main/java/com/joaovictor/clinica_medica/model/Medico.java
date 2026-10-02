@@ -1,6 +1,7 @@
 package com.joaovictor.clinica_medica.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -16,13 +17,13 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotBlank
     private String nome;
 
-    @NotNull
+    @NotBlank
     private String crm;
 
-    @NotNull
+    @NotBlank
     private String especialidade;
 }
 
