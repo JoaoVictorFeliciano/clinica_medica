@@ -5,7 +5,6 @@ import com.joaovictor.clinica_medica.dto.PacienteResponseDto;
 import com.joaovictor.clinica_medica.model.Paciente;
 import com.joaovictor.clinica_medica.repository.PacienteRepository;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 

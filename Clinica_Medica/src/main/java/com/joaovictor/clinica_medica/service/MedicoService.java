@@ -5,7 +5,6 @@ import com.joaovictor.clinica_medica.dto.MedicoResponseDto;
 import com.joaovictor.clinica_medica.model.Medico;
 import com.joaovictor.clinica_medica.repository.MedicoRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

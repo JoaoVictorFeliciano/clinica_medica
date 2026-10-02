@@ -9,7 +9,6 @@ import com.joaovictor.clinica_medica.repository.ConsultaRepository;
 import com.joaovictor.clinica_medica.repository.MedicoRepository;
 import com.joaovictor.clinica_medica.repository.PacienteRepository;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -102,12 +101,9 @@ public class ConsultaService {
                 .toList();
     }
 
-    public ConsultaResponseDto atualizar(
-            Long id,
-            ConsultaRequestDto dto) {
+    public ConsultaResponseDto atualizar(Long id, ConsultaRequestDto dto) {
 
-        Consulta consultaExistente =
-                consultaRepository.buscarPorId(id);
+        Consulta consultaExistente = consultaRepository.buscarPorId(id);
 
         if (consultaExistente == null) {
             throw new IllegalArgumentException("Consulta não encontrada");

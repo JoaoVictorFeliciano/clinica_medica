@@ -19,8 +19,7 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<PacienteResponseDto> salvar(
-            @RequestBody PacienteRequestDto dto) {
+    public ResponseEntity<PacienteResponseDto> salvar(@RequestBody PacienteRequestDto dto) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -28,8 +27,7 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PacienteResponseDto> buscarPorId(
-            @PathVariable Long id) {
+    public ResponseEntity<PacienteResponseDto> buscarPorId(@PathVariable Long id) {
 
         PacienteResponseDto paciente = pacienteService.buscarPorId(id);
 
@@ -47,18 +45,15 @@ public class PacienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PacienteResponseDto> atualizar(
-            @PathVariable Long id,
-            @RequestBody PacienteRequestDto dto) {
-
+    public ResponseEntity<PacienteResponseDto> atualizar(@PathVariable Long id,
+                                                         @RequestBody PacienteRequestDto dto) {
         return ResponseEntity.ok(
                 pacienteService.atualizar(id, dto)
         );
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(
-            @PathVariable Long id) {
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
 
         pacienteService.excluir(id);
 
