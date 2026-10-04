@@ -3,6 +3,7 @@ package com.joaovictor.clinica_medica.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import java.time.LocalDate;
 
@@ -22,12 +23,14 @@ public class Paciente {
     private String nome;
 
     @NotBlank
+    @Pattern(regexp = "\\d{11}")
     private String cpf;
 
     @NotBlank
     private LocalDate dataNascimento;
 
     @NotBlank
+    @Pattern(regexp = "\\d{10,11}")
     private String telefone;
 }
 
