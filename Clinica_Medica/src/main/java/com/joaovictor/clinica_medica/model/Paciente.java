@@ -26,7 +26,7 @@ public class Paciente {
     @Pattern(regexp = "\\d{11}")
     private String cpf;
 
-    @NotBlank
+
     private LocalDate dataNascimento;
 
     @NotBlank
